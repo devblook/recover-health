@@ -1,7 +1,7 @@
 package me.bryangaming.recoverhealth.loader;
 
-import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.PluginService;
+import me.bryangaming.recoverhealth.manager.FileManager;
 
 public class FilesLoader implements Loader{
 

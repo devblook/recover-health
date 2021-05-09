@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 
 public class EventsLoader implements Loader{
 
-    private PluginService pluginService;
+    private final PluginService pluginService;
 
     public EventsLoader(PluginService pluginService){
         this.pluginService = pluginService;

@@ -1,7 +1,7 @@
 package me.bryangaming.recoverhealth.listeners;
 
-import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.PluginService;
+import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.manager.SenderManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -71,19 +71,24 @@ public class DamageListener implements Listener{
                 continue;
             }
 
+            if (actions.startsWith("[CONSOLECMD]")){
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), actions.substring(12));
+                continue;
+            }
+
             if (actions.startsWith("[LIGHTING]")){
                 player.getWorld().strikeLightning(player.getLocation());
                 continue;
             }
 
             if (actions.startsWith("[BROADCAST]")){
-                Bukkit.broadcastMessage(actions.substring(9));
+                Bukkit.broadcastMessage(actions.substring(11));
                 continue;
             }
 
             if (actions.startsWith("[BROADCASTWORLD]")){
                 player.getWorld().getPlayers().forEach(worldPlayer -> {
-                    worldPlayer.sendMessage(actions.substring(9));
+                    worldPlayer.sendMessage(actions.substring(16));
                 });
                 continue;
             }

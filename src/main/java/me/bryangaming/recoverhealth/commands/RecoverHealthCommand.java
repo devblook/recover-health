@@ -1,7 +1,6 @@
 package me.bryangaming.recoverhealth.commands;
 
 import me.bryangaming.recoverhealth.PluginService;
-import me.bryangaming.recoverhealth.RecoverHealth;
 import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.manager.SenderManager;
 import me.bryangaming.recoverhealth.utils.TextUtils;
@@ -16,7 +15,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Command(names = {"recoverhealth", "rh"})
@@ -50,12 +48,10 @@ public class RecoverHealthCommand implements CommandClass{
 
         Material material = Material.getMaterial(configFile.getString("item.id").toUpperCase());
 
-        System.out.println("test");
         if (material == null){
             pluginService.getPlugin().getLogger().info("Unknown material!");
             return true;
         }
-        System.out.println("test1");
 
         ItemStack itemStack = new ItemStack(material);
 
@@ -69,7 +65,6 @@ public class RecoverHealthCommand implements CommandClass{
         }
 
         itemStack.setItemMeta(itemMeta);
-
 
         Inventory inventory = player.getInventory();
         int times = 0;

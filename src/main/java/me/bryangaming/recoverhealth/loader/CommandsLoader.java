@@ -4,7 +4,6 @@ import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.commands.RecoverHealthCommand;
 import me.bryangaming.recoverhealth.flow.TranslatorProvider;
 import me.fixeddev.commandflow.CommandManager;
-import me.fixeddev.commandflow.SimpleCommandManager;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilder;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilderImpl;
 import me.fixeddev.commandflow.annotated.CommandClass;
