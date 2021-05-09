@@ -1,0 +1,43 @@
+#
+# RecoverHealth 1.0
+# By BryanG.
+#
+
+# Permissions:
+# - recoverhealth.reload : To reload the plugin.
+# - recoverhealth.give : To give the potion.
+
+
+# Options.
+options:
+  add-health: 5
+
+# Item name:
+item:
+  id: DIAMOND_BLOCK
+  name: "&aTotem block."
+  lore:
+    - ""
+    - "&aClick to activate the totem!"
+
+# When the player use the totem.
+# You can watch the actions in the plugin page.
+event:
+  actions:
+    - "[MESSAGE] nose"
+
+
+# The plugin command.
+command:
+  help:
+    - "&a[Server] &8| &fRecoverHealth - Help"
+    - "&8- &f/rh help &8: &fPlugin help."
+    - "&8- &f/rh reload &8: &fTo reload the plugin."
+    - "&8- &f/rh give [quantity] &8: &fTo give the item."
+  reload: "&a[Server] &8| &fPlugin reloaded."
+  give: "&a[Server] &8| &f%qnty% &fitems gived!"
+
+error:
+  console: "&c[Error] &8| &fYou can't the command in the console."
+  no-perms: "&c[Error] &8| &fYou don't have the permission to do this."
+  unknown-number: "&c[Error] &8| &fThe argument is not a number."

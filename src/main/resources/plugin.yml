@@ -1,0 +1,5 @@
+name: RecoverHealth
+version: 1.0
+author: BryanG
+main: me.bryangaming.recoverhealth.RecoverHealth
+api-version: 1.16
