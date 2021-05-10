@@ -4,6 +4,7 @@ import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.manager.SenderManager;
 import org.bukkit.Bukkit;
+import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
@@ -12,6 +13,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 public class DamageListener implements Listener{
 
@@ -108,7 +112,7 @@ public class DamageListener implements Listener{
             }
 
             if (actions.startsWith("[BROADCASTSOUND]")) {
-                String[] soundPath = actions.substring(7).split(";");
+                String[] soundPath = actions.substring(16).split(";");
 
                 Sound sound;
 
@@ -121,6 +125,20 @@ public class DamageListener implements Listener{
                 Bukkit.getServer().getOnlinePlayers().forEach(onlinePlayer -> {
                     onlinePlayer.playSound(player.getLocation(), sound, Float.parseFloat(soundPath[1]), Float.parseFloat(soundPath[2]));
                 });
+                continue;
+            }
+
+            if (actions.startsWith("[EFFECT]")){
+                String[] effectPath = actions.substring(8).split(";");
+
+                PotionEffectType effect = PotionEffectType.getByName(effectPath[0]);
+
+                if (effect == null){
+                    return;
+                }
+
+                player.addPotionEffect(new PotionEffect(effect, Integer.parseInt(effectPath[1]), Integer.parseInt(effectPath[2])));
+                continue;
             }
         }
     }
