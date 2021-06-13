@@ -4,12 +4,11 @@ import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.manager.SenderManager;
 import me.bryangaming.recoverhealth.utils.TextUtils;
-import me.fixeddev.commandflow.annotated.CommandClass;
-import me.fixeddev.commandflow.annotated.annotation.Command;
-import me.fixeddev.commandflow.annotated.annotation.OptArg;
-import me.fixeddev.commandflow.bukkit.annotation.Sender;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -17,8 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-@Command(names = {"recoverhealth", "rh"})
-public class RecoverHealthCommand implements CommandClass{
+public class RecoverHealthCommand implements CommandExecutor {
 
     private final PluginService pluginService;
 
@@ -32,60 +30,75 @@ public class RecoverHealthCommand implements CommandClass{
         this.senderManager = pluginService.getSender();
     }
 
-    @Command(names = "")
-    public boolean mainSubCommand(@Sender Player player){
-        senderManager.sendMessage(player, configFile.getStringList("command.help"));
-        return true;
-    }
 
-    @Command(names = "give", permission = "recoverhealth.give")
-    public boolean onGiveSubCommand(@Sender Player player, @OptArg("1") String qnty){
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (!StringUtils.isNumeric(qnty)){
-            senderManager.sendMessage(player, configFile.getString("error.unknown-number"));
+        if (!(sender instanceof Player)){
+            System.out.println(TextUtils.colorize(configFile.getString("error.console")));
             return true;
         }
 
-        Material material = Material.getMaterial(configFile.getString("item.id").toUpperCase());
+        Player player = (Player) sender;
 
-        if (material == null){
-            pluginService.getPlugin().getLogger().info("Unknown material!");
+        if (args.length < 1){
+            senderManager.sendMessage(player, configFile.getStringList("command.help"));
             return true;
         }
 
-        ItemStack itemStack = new ItemStack(material);
+        switch (args[0]) {
+            case "give":
+                String quantity;
+                if (args.length < 2) {
+                    quantity = "1";
+                } else {
+                    quantity = args[1];
+                }
+                if (!StringUtils.isNumeric(quantity)) {
+                    senderManager.sendMessage(player, configFile.getString("error.unknown-number"));
+                    return true;
+                }
 
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(TextUtils.colorize(configFile.getString("item.name")));
+                Material material = Material.getMaterial(configFile.getString("item.id").toUpperCase());
 
-        if (!configFile.getStringList("item.lore").isEmpty()) {
-            List<String> lore = configFile.getStringList("item.lore");
-            lore.replaceAll(TextUtils::colorize);
-            itemMeta.setLore(lore);
+                if (material == null) {
+                    pluginService.getPlugin().getLogger().info("Unknown material!");
+                    return true;
+                }
+
+                ItemStack itemStack = new ItemStack(material);
+
+                ItemMeta itemMeta = itemStack.getItemMeta();
+                itemMeta.setDisplayName(TextUtils.colorize(configFile.getString("item.name")));
+
+                if (!configFile.getStringList("item.lore").isEmpty()) {
+                    List<String> lore = configFile.getStringList("item.lore");
+                    lore.replaceAll(TextUtils::colorize);
+                    itemMeta.setLore(lore);
+                }
+
+                itemStack.setItemMeta(itemMeta);
+
+                Inventory inventory = player.getInventory();
+                int times = 0;
+
+                while (times != Integer.parseInt(quantity)) {
+                    inventory.addItem(itemStack);
+                    times++;
+                }
+                player.updateInventory();
+
+                senderManager.sendMessage(player, configFile.getString("command.give")
+                        .replace("%qnty%", quantity));
+                return true;
+            case "reload":
+                pluginService.getFiles().getConfig().reload();
+                senderManager.sendMessage(player, configFile.getString("command.reload"));
+                return true;
+            default:
+                senderManager.sendMessage(player, configFile.getString("error.unknown-args"));
+                return true;
         }
 
-        itemStack.setItemMeta(itemMeta);
-
-        Inventory inventory = player.getInventory();
-        int times = 0;
-
-        while (times != Integer.parseInt(qnty)){
-            inventory.addItem(itemStack);
-            times++;
-        }
-        player.updateInventory();
-
-        senderManager.sendMessage(player, configFile.getString("command.give")
-                .replace("%qnty%", qnty));
-        return true;
     }
-
-    @Command(names = "reload", permission = "recoverhealth.reload")
-    public boolean reloadSubCommand(@Sender Player player){
-
-        pluginService.getFiles().getConfig().reload();
-        senderManager.sendMessage(player, configFile.getString("command.reload"));
-        return true;
-    }
-
 }

@@ -61,7 +61,14 @@ public class DamageListener implements Listener{
         }
 
         event.setCancelled(true);
-        player.getInventory().clear(player.getInventory().getHeldItemSlot());
+
+        if (itemStack.getAmount() < 2){
+            player.getInventory().clear(player.getInventory().getHeldItemSlot());
+        }else{
+            itemStack.setAmount(itemStack.getAmount() - 1);
+            player.getInventory().setItem(player.getInventory().getHeldItemSlot(), itemStack);
+        }
+
         player.setHealth(player.getHealth() + configFile.getInt("options.add-health"));
 
         for (String actions : configFile.getStringList("event.actions")){

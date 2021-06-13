@@ -1,5 +1,13 @@
 name: RecoverHealth
-version: 1.0
+version: 1.1
 author: BryanG
 main: me.bryangaming.recoverhealth.RecoverHealth
 api-version: 1.16
+
+commands:
+  recoverhealth:
+    description: The main command.
+    aliases:
+      - rh
+      - recoverh
+      - rhealth
