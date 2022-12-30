@@ -1,4 +1,4 @@
-package me.bryangaming.recoverhealth;
+package me.bryang.recoverhealth;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

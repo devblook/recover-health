@@ -1,8 +1,8 @@
-package me.bryangaming.recoverhealth.services;
+package me.bryang.recoverhealth.services;
 
-import me.bryangaming.recoverhealth.PluginService;
-import me.bryangaming.recoverhealth.builder.CommandBuilder;
-import me.bryangaming.recoverhealth.commands.RecoverHealthCommand;
+import me.bryang.recoverhealth.PluginService;
+import me.bryang.recoverhealth.builder.CommandBuilder;
+import me.bryang.recoverhealth.commands.RecoverHealthCommand;
 import org.bukkit.Bukkit;
 
 public class CommandService implements Service {

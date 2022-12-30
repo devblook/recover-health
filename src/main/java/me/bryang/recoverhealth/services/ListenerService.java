@@ -1,7 +1,7 @@
-package me.bryangaming.recoverhealth.services;
+package me.bryang.recoverhealth.services;
 
-import me.bryangaming.recoverhealth.PluginService;
-import me.bryangaming.recoverhealth.listeners.DamageListener;
+import me.bryang.recoverhealth.PluginService;
+import me.bryang.recoverhealth.listeners.DamageListener;
 import org.bukkit.Bukkit;
 
 public class ListenerService implements Service {

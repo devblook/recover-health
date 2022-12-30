@@ -1,4 +1,4 @@
-package me.bryangaming.recoverhealth.manager;
+package me.bryang.recoverhealth.manager;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;

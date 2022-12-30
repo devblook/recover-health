@@ -1,9 +1,9 @@
-package me.bryangaming.recoverhealth;
+package me.bryang.recoverhealth;
 
-import me.bryangaming.recoverhealth.services.CommandService;
-import me.bryangaming.recoverhealth.services.FileService;
-import me.bryangaming.recoverhealth.services.ListenerService;
-import me.bryangaming.recoverhealth.services.Service;
+import me.bryang.recoverhealth.services.CommandService;
+import me.bryang.recoverhealth.services.FileService;
+import me.bryang.recoverhealth.services.ListenerService;
+import me.bryang.recoverhealth.services.Service;
 
 public class PluginService {
 

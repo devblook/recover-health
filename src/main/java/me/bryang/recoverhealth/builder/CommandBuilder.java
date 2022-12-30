@@ -1,4 +1,4 @@
-package me.bryangaming.recoverhealth.builder;
+package me.bryang.recoverhealth.builder;
 
 import org.bukkit.command.CommandExecutor;
 

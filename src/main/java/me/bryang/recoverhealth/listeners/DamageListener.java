@@ -1,7 +1,7 @@
-package me.bryangaming.recoverhealth.listeners;
+package me.bryang.recoverhealth.listeners;
 
-import me.bryangaming.recoverhealth.PluginService;
-import me.bryangaming.recoverhealth.manager.FileManager;
+import me.bryang.recoverhealth.PluginService;
+import me.bryang.recoverhealth.manager.FileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;

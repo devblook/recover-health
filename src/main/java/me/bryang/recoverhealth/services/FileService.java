@@ -1,7 +1,7 @@
-package me.bryangaming.recoverhealth.services;
+package me.bryang.recoverhealth.services;
 
-import me.bryangaming.recoverhealth.RecoverHealth;
-import me.bryangaming.recoverhealth.manager.FileManager;
+import me.bryang.recoverhealth.RecoverHealth;
+import me.bryang.recoverhealth.manager.FileManager;
 
 public class FileService implements Service {
 

@@ -1,4 +1,4 @@
-package me.bryangaming.recoverhealth.utils;
+package me.bryang.recoverhealth.utils;
 
 public class TextUtils {
 

@@ -1,4 +1,4 @@
-package me.bryangaming.recoverhealth.services;
+package me.bryang.recoverhealth.services;
 
 public interface Service {
 

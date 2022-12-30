@@ -1,8 +1,8 @@
-package me.bryangaming.recoverhealth.commands;
+package me.bryang.recoverhealth.commands;
 
-import me.bryangaming.recoverhealth.PluginService;
-import me.bryangaming.recoverhealth.manager.FileManager;
-import me.bryangaming.recoverhealth.utils.TextUtils;
+import me.bryang.recoverhealth.PluginService;
+import me.bryang.recoverhealth.manager.FileManager;
+import me.bryang.recoverhealth.utils.TextUtils;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
