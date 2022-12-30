@@ -11,8 +11,8 @@ command:
 
 error:
 
-  console: "&c[Error] &8| &fYou can't the command in the console."
+  no-console: "&c[Error] &8| &fYou can't the command in the console."
   no-permission: "&c[Error] &8| &fYou don't have the permission to do this."
 
-  unknown-args: "&c[Error] &8| &fUnknown argument! &a/recoverhealth help."
+  unknown-arguments: "&c[Error] &8| &fUnknown argument! &a/recoverhealth help."
   unknown-number: "&c[Error] &8| &fThe argument is not a number."
