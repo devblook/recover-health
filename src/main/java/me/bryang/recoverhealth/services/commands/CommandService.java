@@ -1,6 +1,7 @@
 package me.bryang.recoverhealth.services.commands;
 
 import me.bryang.recoverhealth.RecoverHealth;
+import me.bryang.recoverhealth.commands.RecoverHealthCommand;
 import me.bryang.recoverhealth.services.Service;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilder;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilderImpl;
@@ -19,7 +20,7 @@ public class CommandService implements Service {
     @Inject
     private RecoverHealth plugin;
     @Inject
-    private Set<CommandClass> commands;
+    private RecoverHealthCommand recoverHealthCommand;
 
     @Override
     public void init() {
@@ -31,9 +32,7 @@ public class CommandService implements Service {
         partInjector.install(new BukkitModule());
 
         AnnotatedCommandTreeBuilder builder = new AnnotatedCommandTreeBuilderImpl(partInjector);
-        for (CommandClass command : commands) {
-            commandManager.registerCommands(builder.fromClass(command));
-        }
+        commandManager.registerCommands(builder.fromClass(recoverHealthCommand));
         plugin.getLogger().info("[RecoverHealth] Commands loaded!");
     }
 }
