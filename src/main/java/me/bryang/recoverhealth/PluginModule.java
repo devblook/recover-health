@@ -1,10 +1,13 @@
 package me.bryang.recoverhealth;
 
-import me.bryang.recoverhealth.commands.CommandModule;
+import me.bryang.recoverhealth.commands.RecoverHealthCommand;
+import me.bryang.recoverhealth.listeners.DamageListener;
 import me.bryang.recoverhealth.manager.FileManager;
 import me.bryang.recoverhealth.services.ListenerService;
 import me.bryang.recoverhealth.services.Service;
 import me.bryang.recoverhealth.services.commands.CommandService;
+import me.fixeddev.commandflow.annotated.CommandClass;
+import org.bukkit.event.Listener;
 import team.unnamed.inject.AbstractModule;
 
 public class PluginModule extends AbstractModule {
@@ -31,6 +34,10 @@ public class PluginModule extends AbstractModule {
                 .named("messages")
                 .toInstance(new FileManager(recoverHealth, "messages.yml"));
 
-        install(new CommandModule());
+        bind(RecoverHealthCommand.class)
+                .singleton();
+
+        bind(DamageListener.class)
+                .singleton();
     }
 }
