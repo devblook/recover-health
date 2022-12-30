@@ -19,8 +19,8 @@ import javax.inject.Named;
 import java.util.List;
 
 
-@Command(names = {"recoverhealth", "rh", "rhealth"})
 @InjectAll
+@Command(names = {"recoverhealth", "rh", "rhealth"})
 public class RecoverHealthCommand implements CommandClass {
 
 
