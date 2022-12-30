@@ -1,14 +1,12 @@
 package me.bryang.recoverhealth.commands;
 
 import me.bryang.recoverhealth.manager.FileManager;
-import me.bryang.recoverhealth.utils.TextUtils;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
 import me.fixeddev.commandflow.annotated.annotation.OptArg;
 import me.fixeddev.commandflow.bukkit.annotation.Sender;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -18,22 +16,17 @@ import team.unnamed.inject.InjectAll;
 import javax.inject.Named;
 import java.util.List;
 
-
 @InjectAll
 @Command(names = {"recoverhealth", "rh", "rhealth"})
 public class RecoverHealthCommand implements CommandClass {
 
-
     private FileManager configFile;
-
     @Named("messages")
-
     private FileManager messagesFile;
 
     @Command(names = "")
     public void mainSubCommand(@Sender Player sender) {
-        messagesFile.getStringList("command.help")
-                .forEach(sender::sendMessage);
+        messagesFile.getStringList("command.help").forEach(sender::sendMessage);
 
     }
 
@@ -68,8 +61,7 @@ public class RecoverHealthCommand implements CommandClass {
         }
         sender.updateInventory();
 
-        sender.sendMessage(messagesFile.getString("command.give")
-                .replace("%number%", String.valueOf(quantity)));
+        sender.sendMessage(messagesFile.getString("command.give").replace("%number%", String.valueOf(quantity)));
 
     }
 
