@@ -1,0 +1,29 @@
+#
+# RecoverHealth 2.0
+# By BryanG.
+#
+
+# Permissions:
+# - recoverhealth.reload : To reload the plugin.
+# - recoverhealth.give : To give the potion.
+
+
+# Options.
+options:
+  add-health: 5
+
+# Item name:
+item:
+  id: DIAMOND_BLOCK
+  name: "&aTotem block."
+  lore:
+    - ""
+    - "&aClick to activate the totem!"
+
+# When the player use the totem.
+# You can watch the actions in the plugin page.
+event:
+  actions:
+    - "[MESSAGE] A sample test"
+
+

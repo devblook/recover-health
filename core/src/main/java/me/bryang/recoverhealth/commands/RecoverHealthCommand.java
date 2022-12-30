@@ -59,6 +59,7 @@ public class RecoverHealthCommand implements CommandClass {
             inventory.addItem(itemStack);
             times++;
         }
+
         sender.updateInventory();
 
         sender.sendMessage(messagesFile.getString("command.give").replace("%number%", String.valueOf(quantity)));

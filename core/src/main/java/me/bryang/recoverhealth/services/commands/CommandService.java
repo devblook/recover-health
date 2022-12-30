@@ -5,15 +5,12 @@ import me.bryang.recoverhealth.commands.RecoverHealthCommand;
 import me.bryang.recoverhealth.services.Service;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilder;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilderImpl;
-import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.part.PartInjector;
 import me.fixeddev.commandflow.annotated.part.defaults.DefaultsModule;
 import me.fixeddev.commandflow.bukkit.BukkitCommandManager;
 import me.fixeddev.commandflow.bukkit.factory.BukkitModule;
-import org.bukkit.Bukkit;
 
 import javax.inject.Inject;
-import java.util.Set;
 
 public class CommandService implements Service {
 

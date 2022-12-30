@@ -5,8 +5,6 @@ import me.bryang.recoverhealth.listeners.DamageListener;
 import org.bukkit.Bukkit;
 import team.unnamed.inject.InjectAll;
 
-import javax.inject.Inject;
-
 @InjectAll
 public class ListenerService implements Service {
 
