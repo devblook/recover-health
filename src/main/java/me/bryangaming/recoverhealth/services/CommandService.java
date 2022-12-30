@@ -9,7 +9,7 @@ public class CommandService implements Service {
 
     private final PluginService pluginService;
 
-    public CommandService(PluginService pluginService){
+    public CommandService(PluginService pluginService) {
         this.pluginService = pluginService;
     }
 
@@ -20,9 +20,9 @@ public class CommandService implements Service {
         pluginService.getPlugin().getLogger().info("Commands loaded!");
     }
 
-    public void registerCommands(CommandBuilder... commandBuilders){
+    public void registerCommands(CommandBuilder... commandBuilders) {
 
-        for (CommandBuilder commandClass : commandBuilders){
+        for (CommandBuilder commandClass : commandBuilders) {
             Bukkit.getPluginCommand(commandClass.getCommandName()).setExecutor(commandClass.getCommandExecutor());
         }
     }

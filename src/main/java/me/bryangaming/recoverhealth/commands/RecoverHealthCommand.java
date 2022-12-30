@@ -3,7 +3,6 @@ package me.bryangaming.recoverhealth.commands;
 import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.manager.FileManager;
 import me.bryangaming.recoverhealth.utils.TextUtils;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class RecoverHealthCommand implements CommandExecutor {
     private final FileManager configFile;
     private final FileManager messagesFile;
 
-    public RecoverHealthCommand(PluginService pluginService){
+    public RecoverHealthCommand(PluginService pluginService) {
         this.pluginService = pluginService;
 
         this.configFile = pluginService.getFiles().getConfigFile();
@@ -34,14 +32,15 @@ public class RecoverHealthCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
 
-        if (!(commandSender instanceof Player)){
+        if (!(commandSender instanceof Player)) {
             System.out.println(messagesFile.getString("error.console"));
             return true;
         }
 
         Player sender = (Player) commandSender;
 
-        if (args.length < 1){
+
+        if (args.length < 1) {
             messagesFile.getStringList("command.help")
                     .forEach(sender::sendMessage);
             return true;
@@ -51,7 +50,7 @@ public class RecoverHealthCommand implements CommandExecutor {
             case "give":
 
 
-                if (!sender.hasPermission("recoverhealth.give")){
+                if (!sender.hasPermission("recoverhealth.give")) {
                     sender.sendMessage(messagesFile.getString("error.no-permissions"));
                     return true;
                 }
@@ -62,7 +61,7 @@ public class RecoverHealthCommand implements CommandExecutor {
                 } else {
                     quantity = args[1];
                 }
-                if (!StringUtils.isNumeric(quantity)) {
+                if (!TextUtils.isNumeric(quantity)) {
                     sender.sendMessage(messagesFile.getString("error.unknown-number")
                             .replace("%number%", quantity));
                     return true;
@@ -78,11 +77,10 @@ public class RecoverHealthCommand implements CommandExecutor {
                 ItemStack itemStack = new ItemStack(material);
 
                 ItemMeta itemMeta = itemStack.getItemMeta();
-                itemMeta.setDisplayName(TextUtils.colorize(configFile.getString("item.name")));
+                itemMeta.setDisplayName(configFile.getString("item.name"));
 
                 if (!configFile.getStringList("item.lore").isEmpty()) {
                     List<String> lore = configFile.getStringList("item.lore");
-                    lore.replaceAll(TextUtils::colorize);
                     itemMeta.setLore(lore);
                 }
 
@@ -102,7 +100,7 @@ public class RecoverHealthCommand implements CommandExecutor {
                 return true;
             case "reload":
 
-                if (!sender.hasPermission("recoverhealth.reload")){
+                if (!sender.hasPermission("recoverhealth.reload")) {
                     sender.sendMessage(messagesFile.getString("error.no-permissions"));
                     return true;
                 }

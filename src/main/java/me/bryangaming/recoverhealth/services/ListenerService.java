@@ -8,7 +8,7 @@ public class ListenerService implements Service {
 
     private final PluginService pluginService;
 
-    public ListenerService(PluginService pluginService){
+    public ListenerService(PluginService pluginService) {
         this.pluginService = pluginService;
     }
 

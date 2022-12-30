@@ -16,7 +16,7 @@ public final class FileManager extends YamlConfiguration {
     private final File file;
 
     public FileManager(Plugin plugin, String fileName, String fileExtension,
-                         File folder) {
+                       File folder) {
         this.fileName = fileName + (fileName.endsWith(fileExtension) ? "" : fileExtension);
         this.plugin = plugin;
 
@@ -76,10 +76,10 @@ public final class FileManager extends YamlConfiguration {
     }
 
     @Override
-    public String getString(String path){
+    public String getString(String path) {
 
         String text = super.getString(path);
-        if (text == null){
+        if (text == null) {
             return "Error: The path is null.";
         }
 

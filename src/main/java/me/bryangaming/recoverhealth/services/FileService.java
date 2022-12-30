@@ -10,7 +10,7 @@ public class FileService implements Service {
     private FileManager configFile;
     private FileManager messagesFile;
 
-    public FileService(RecoverHealth plugin){
+    public FileService(RecoverHealth plugin) {
         this.plugin = plugin;
     }
 
@@ -20,7 +20,7 @@ public class FileService implements Service {
         messagesFile = new FileManager(plugin, "messages.yml");
     }
 
-    public FileManager getConfigFile(){
+    public FileManager getConfigFile() {
         return configFile;
     }
 
