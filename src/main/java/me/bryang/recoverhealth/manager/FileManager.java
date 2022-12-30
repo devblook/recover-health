@@ -96,8 +96,7 @@ public final class FileManager extends YamlConfiguration {
             return null;
         }
 
-        text
-                .replaceAll(message -> ChatColor.translateAlternateColorCodes('&', message));
+        text.replaceAll(message -> ChatColor.translateAlternateColorCodes('&', message));
         return text;
     }
 }
