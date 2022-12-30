@@ -2,9 +2,7 @@ package me.bryangaming.recoverhealth.listeners;
 
 import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.manager.FileManager;
-import me.bryangaming.recoverhealth.manager.SenderManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
@@ -15,20 +13,17 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 
 public class DamageListener implements Listener{
 
-    private PluginService pluginService;
+    private final PluginService pluginService;
 
     private final FileManager configFile;
-    private final SenderManager senderManager;
 
     public DamageListener(PluginService pluginService){
         this.pluginService = pluginService;
 
-        this.configFile = pluginService.getFiles().getConfig();
-        this.senderManager = pluginService.getSender();
+        this.configFile = pluginService.getFiles().getConfigFile();
     }
 
     @EventHandler
@@ -73,7 +68,7 @@ public class DamageListener implements Listener{
 
         for (String actions : configFile.getStringList("event.actions")){
             if (actions.startsWith("[MESSAGE]")){
-                senderManager.sendMessage(player, actions.substring(9));
+                player.sendMessage(actions.substring(9));
                 continue;
             }
 
