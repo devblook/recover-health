@@ -6,12 +6,3 @@ version: 2.0
 author: BryanG
 
 api-version: 1.16
-
-
-commands:
-  recoverhealth:
-    description: The main command.
-    aliases:
-      - rh
-      - recoverh
-      - rhealth
