@@ -19,7 +19,7 @@ import javax.inject.Named;
 import java.util.List;
 
 
-@Command(names = {"recoverhealth", "rh", "rhealth", ""})
+@Command(names = {"recoverhealth", "rh", "rhealth"})
 @InjectAll
 public class RecoverHealthCommand implements CommandClass {
 
@@ -27,8 +27,8 @@ public class RecoverHealthCommand implements CommandClass {
     private FileManager configFile;
 
     @Named("messages")
-    private FileManager messagesFile;
 
+    private FileManager messagesFile;
 
     @Command(names = "")
     public void mainSubCommand(@Sender Player sender) {

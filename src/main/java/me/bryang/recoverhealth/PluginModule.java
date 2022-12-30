@@ -5,10 +5,11 @@ import me.bryang.recoverhealth.manager.FileManager;
 import me.bryang.recoverhealth.services.ListenerService;
 import me.bryang.recoverhealth.services.Service;
 import me.bryang.recoverhealth.services.commands.CommandService;
+import team.unnamed.inject.AbstractModule;
 import team.unnamed.inject.Binder;
 import team.unnamed.inject.Module;
 
-public class PluginModule implements Module {
+public class PluginModule extends AbstractModule {
 
     private final RecoverHealth recoverHealth;
 
@@ -17,20 +18,23 @@ public class PluginModule implements Module {
     }
 
     @Override
-    public void configure(Binder binder) {
+    public void configure() {
 
-        binder.bind(RecoverHealth.class)
+        bind(RecoverHealth.class)
                         .toInstance(recoverHealth);
 
-        binder.multibind(Service.class)
+        multibind(Service.class)
                 .asSet()
                 .to(CommandService.class)
                 .to(ListenerService.class);
 
-        binder.bind(FileManager.class)
+        bind(FileManager.class)
                 .toInstance(new FileManager(recoverHealth, "config.yml"));
-        binder.bind(FileManager.class).named("messages").
-                toInstance(new FileManager(recoverHealth, "messages.yml"));
+        bind(FileManager.class)
+                .named("messages")
+                .toInstance(new FileManager(recoverHealth, "messages.yml"));
+
+
 
 
     }
