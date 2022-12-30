@@ -1,13 +1,24 @@
 package me.bryang.recoverhealth;
 
+import me.bryang.recoverhealth.services.Service;
 import org.bukkit.plugin.java.JavaPlugin;
+import team.unnamed.inject.Injector;
+
+import javax.inject.Inject;
+import java.util.Set;
 
 public final class RecoverHealth extends JavaPlugin {
+
+    @Inject
+    private Set<Service> pluginServices;
 
     @Override
     public void onEnable() {
 
-        PluginService pluginService = new PluginService(this);
+        Injector injector = Injector.create(new PluginModule(this));
+        injector.injectMembers(this);
+
+        pluginServices.forEach(Service::init);
 
         getLogger().info("Plugin created by " + getDescription().getAuthors() + "");
         getLogger().info("You are using version " + getDescription().getVersion() + ".");
