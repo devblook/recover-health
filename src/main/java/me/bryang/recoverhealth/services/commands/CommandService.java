@@ -8,6 +8,7 @@ import me.fixeddev.commandflow.annotated.part.PartInjector;
 import me.fixeddev.commandflow.annotated.part.defaults.DefaultsModule;
 import me.fixeddev.commandflow.bukkit.BukkitCommandManager;
 import me.fixeddev.commandflow.bukkit.factory.BukkitModule;
+import org.bukkit.Bukkit;
 
 public class CommandService implements Service {
 
@@ -24,6 +25,9 @@ public class CommandService implements Service {
         AnnotatedCommandTreeBuilder builder = new AnnotatedCommandTreeBuilderImpl(partInjector);
 
         commandManager.registerCommands(builder.fromClass(new RecoverHealthCommand()));
+
+        Bukkit.getLogger().info("[RecoverHealth] Commands loaded!");
+
     }
 
 }

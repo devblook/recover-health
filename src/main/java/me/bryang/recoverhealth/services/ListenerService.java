@@ -14,6 +14,6 @@ public class ListenerService implements Service {
     @Override
     public void init() {
         Bukkit.getPluginManager().registerEvents(new DamageListener(), recoverHealth);
-        Bukkit.getLogger().info("Events loaded!");
+        Bukkit.getLogger().info("[RecoverHealth] Events loaded!");
     }
 }
