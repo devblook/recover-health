@@ -2,7 +2,6 @@ package me.bryangaming.recoverhealth.commands;
 
 import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.manager.FileManager;
-import me.bryangaming.recoverhealth.manager.SenderManager;
 import me.bryangaming.recoverhealth.utils.TextUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
@@ -14,6 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+
 import java.util.List;
 
 public class RecoverHealthCommand implements CommandExecutor {
@@ -21,33 +21,36 @@ public class RecoverHealthCommand implements CommandExecutor {
     private final PluginService pluginService;
 
     private final FileManager configFile;
-    private final SenderManager senderManager;
+    private final FileManager messagesFile;
 
     public RecoverHealthCommand(PluginService pluginService){
         this.pluginService = pluginService;
 
-        this.configFile = pluginService.getFiles().getConfig();
-        this.senderManager = pluginService.getSender();
+        this.configFile = pluginService.getFiles().getConfigFile();
+        this.messagesFile = pluginService.getFiles().getMessagesFile();
     }
 
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
 
-        if (!(sender instanceof Player)){
-            System.out.println(TextUtils.colorize(configFile.getString("error.console")));
             return true;
         }
 
-        Player player = (Player) sender;
 
         if (args.length < 1){
-            senderManager.sendMessage(player, configFile.getStringList("command.help"));
             return true;
         }
 
         switch (args[0]) {
             case "give":
+
+
+                if (!sender.hasPermission("recoverhealth.give")){
+                    sender.sendMessage(messagesFile.getString("error.no-permissions"));
+                    return true;
+                }
+
                 String quantity;
                 if (args.length < 2) {
                     quantity = "1";
@@ -55,7 +58,8 @@ public class RecoverHealthCommand implements CommandExecutor {
                     quantity = args[1];
                 }
                 if (!StringUtils.isNumeric(quantity)) {
-                    senderManager.sendMessage(player, configFile.getString("error.unknown-number"));
+                    sender.sendMessage(messagesFile.getString("error.unknown-number")
+                            .replace("%number%", quantity));
                     return true;
                 }
 
@@ -79,24 +83,30 @@ public class RecoverHealthCommand implements CommandExecutor {
 
                 itemStack.setItemMeta(itemMeta);
 
-                Inventory inventory = player.getInventory();
                 int times = 0;
 
                 while (times != Integer.parseInt(quantity)) {
                     inventory.addItem(itemStack);
                     times++;
                 }
-                player.updateInventory();
 
-                senderManager.sendMessage(player, configFile.getString("command.give")
-                        .replace("%qnty%", quantity));
+                sender.sendMessage(messagesFile.getString("command.give")
+                        .replace("%number%", quantity));
                 return true;
             case "reload":
-                pluginService.getFiles().getConfig().reload();
-                senderManager.sendMessage(player, configFile.getString("command.reload"));
+
+                if (!sender.hasPermission("recoverhealth.reload")){
+                    sender.sendMessage(messagesFile.getString("error.no-permissions"));
+                    return true;
+                }
+
+                configFile.reload();
+                messagesFile.reload();
+
+                sender.sendMessage(messagesFile.getString("command.reload"));
                 return true;
             default:
-                senderManager.sendMessage(player, configFile.getString("error.unknown-args"));
+                sender.sendMessage(messagesFile.getString("error.unknown-args"));
                 return true;
         }
 
