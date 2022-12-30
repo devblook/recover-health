@@ -1,5 +1,6 @@
 package me.bryangaming.recoverhealth.manager;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -72,6 +73,17 @@ public final class FileManager extends YamlConfiguration {
         } catch (IOException | InvalidConfigurationException e) {
             plugin.getLogger().log(Level.SEVERE, "Reload of the file '" + fileName + "' failed.", e);
         }
+    }
+
+    @Override
+    public String getString(String path){
+
+        String text = super.getString(path);
+        if (text == null){
+            return "Error: The path is null.";
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 
 }
