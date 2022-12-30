@@ -1,6 +1,5 @@
 package me.bryang.recoverhealth.listeners;
 
-import me.bryang.recoverhealth.PluginService;
 import me.bryang.recoverhealth.manager.FileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -14,17 +13,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import javax.inject.Inject;
+
 public class DamageListener implements Listener {
 
-    private final PluginService pluginService;
+    @Inject
+    private FileManager configFile;
 
-    private final FileManager configFile;
-
-    public DamageListener(PluginService pluginService) {
-        this.pluginService = pluginService;
-
-        this.configFile = pluginService.getFiles().getConfigFile();
-    }
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
@@ -106,7 +101,7 @@ public class DamageListener implements Listener {
                 try {
                     sound = Sound.valueOf(soundPath[0]);
                 } catch (IllegalArgumentException illegalArgumentException) {
-                    pluginService.getPlugin().getLogger().info("Error! The sound no exists: " + soundPath[0]);
+                    Bukkit.getLogger().info("Error! The sound no exists: " + soundPath[0]);
                     continue;
                 }
                 player.playSound(player.getLocation(), sound, Float.parseFloat(soundPath[1]), Float.parseFloat(soundPath[2]));
@@ -121,7 +116,7 @@ public class DamageListener implements Listener {
                 try {
                     sound = Sound.valueOf(soundPath[0]);
                 } catch (IllegalArgumentException illegalArgumentException) {
-                    pluginService.getPlugin().getLogger().info("Error! The sound no exists: " + soundPath[0]);
+                    Bukkit.getLogger().info("Error! The sound no exists: " + soundPath[0]);
                     continue;
                 }
                 Bukkit.getServer().getOnlinePlayers().forEach(onlinePlayer -> {
