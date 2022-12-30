@@ -34,11 +34,16 @@ public class RecoverHealthCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
 
+        if (!(commandSender instanceof Player)){
+            System.out.println(messagesFile.getString("error.console"));
             return true;
         }
 
+        Player sender = (Player) commandSender;
 
         if (args.length < 1){
+            messagesFile.getStringList("command.help")
+                    .forEach(sender::sendMessage);
             return true;
         }
 
@@ -83,12 +88,14 @@ public class RecoverHealthCommand implements CommandExecutor {
 
                 itemStack.setItemMeta(itemMeta);
 
+                Inventory inventory = sender.getInventory();
                 int times = 0;
 
                 while (times != Integer.parseInt(quantity)) {
                     inventory.addItem(itemStack);
                     times++;
                 }
+                sender.updateInventory();
 
                 sender.sendMessage(messagesFile.getString("command.give")
                         .replace("%number%", quantity));
