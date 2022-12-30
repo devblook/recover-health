@@ -1,20 +1,19 @@
-package me.bryangaming.recoverhealth.loader;
+package me.bryangaming.recoverhealth.services;
 
 import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.listeners.DamageListener;
 import org.bukkit.Bukkit;
 
-public class EventsLoader implements Loader{
+public class ListenerService implements Service {
 
     private final PluginService pluginService;
 
-    public EventsLoader(PluginService pluginService){
+    public ListenerService(PluginService pluginService){
         this.pluginService = pluginService;
-        load();
     }
 
     @Override
-    public void load() {
+    public void init() {
         Bukkit.getPluginManager().registerEvents(new DamageListener(pluginService), pluginService.getPlugin());
         pluginService.getPlugin().getLogger().info("Events loaded!");
     }

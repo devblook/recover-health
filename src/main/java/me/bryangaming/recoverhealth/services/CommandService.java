@@ -1,23 +1,20 @@
-package me.bryangaming.recoverhealth.loader;
+package me.bryangaming.recoverhealth.services;
 
 import me.bryangaming.recoverhealth.PluginService;
 import me.bryangaming.recoverhealth.builder.CommandBuilder;
 import me.bryangaming.recoverhealth.commands.RecoverHealthCommand;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.plugin.PluginManager;
 
-public class CommandsLoader implements Loader{
+public class CommandService implements Service {
 
     private final PluginService pluginService;
 
-    public CommandsLoader(PluginService pluginService){
+    public CommandService(PluginService pluginService){
         this.pluginService = pluginService;
-        load();
     }
 
     @Override
-    public void load() {
+    public void init() {
         registerCommands(
                 CommandBuilder.get("recoverhealth", new RecoverHealthCommand(pluginService)));
         pluginService.getPlugin().getLogger().info("Commands loaded!");
