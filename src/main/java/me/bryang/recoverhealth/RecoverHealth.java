@@ -22,7 +22,7 @@ public final class RecoverHealth extends JavaPlugin {
 
         getLogger().info("Plugin created by " + getDescription().getAuthors() + "");
         getLogger().info("You are using version " + getDescription().getVersion() + ".");
-        getLogger().info("If you want support, you can join in:  https://discord.devblook.team/");
+        getLogger().info("If you want support, you can join in: https://discord.devblook.team/");
 
     }
 
