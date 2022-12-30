@@ -6,10 +6,12 @@ public final class RecoverHealth extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         PluginService pluginService = new PluginService(this);
+
         getLogger().info("Plugin created by " + getDescription().getAuthors() + "");
         getLogger().info("You are using version " + getDescription().getVersion() + ".");
-        getLogger().info("If you want support, you can join in: https://discord.gg/YjhubS3bWW");
+        getLogger().info("If you want support, you can join in:  https://discord.devblook.team/");
 
     }
 
