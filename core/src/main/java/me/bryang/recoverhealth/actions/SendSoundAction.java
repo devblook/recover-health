@@ -4,11 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-public class SoundAction implements Action {
+public class SendSoundAction implements Action {
 
     private final String value;
 
-    public SoundAction(String value) {
+    public SendSoundAction(String value) {
         this.value = value;
     }
 
