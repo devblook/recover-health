@@ -59,7 +59,7 @@ public class DamageListener implements Listener {
             playerInventory.setItem(playerInventory.getHeldItemSlot(), itemStack);
         }
 
-        sender.setHealth(sender.getHealth() + configFile.getInt("options.add-health"));
+        sender.setHealth(configFile.getInt("options.add-health"));
 
         actionCacheRegistry.get()
                 .forEach(action -> action.execute(sender));
