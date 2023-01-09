@@ -21,7 +21,7 @@ dependencies {
 }
 tasks {
     shadowJar {
-        archiveFileName.set("RecoverHealth-${project.version}.jar")
+        archiveFileName.set("RecoverHealth.jar")
 
         relocate("me.fixeddev", "${project.group}.recoverhealth.libs.commandflow")
         relocate("team.unnamed.inject", "${project.group}.recoverhealth.libs.inject")
