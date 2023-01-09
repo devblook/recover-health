@@ -4,11 +4,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class EffectAction implements Action {
+public class SendEffectAction implements Action {
 
     private final String value;
 
-    public EffectAction(String value) {
+    public SendEffectAction(String value) {
         this.value = value;
     }
 
