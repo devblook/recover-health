@@ -2,11 +2,11 @@ package me.bryang.recoverhealth.actions;
 
 import org.bukkit.entity.Player;
 
-public class SendCommandAction implements Action {
+public class PerformCommandAction implements Action {
 
     private final String value;
 
-    public SendCommandAction(String value) {
+    public PerformCommandAction(String value) {
         this.value = value;
     }
 
