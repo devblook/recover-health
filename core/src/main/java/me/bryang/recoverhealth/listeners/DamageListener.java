@@ -17,7 +17,7 @@ import team.unnamed.inject.InjectAll;
 public class DamageListener implements Listener {
 
     private FileManager configFile;
-    private CacheRegistry<Action> actionCacheRegistry;
+    private CacheRegistry<Action> actionCacheRegister;
 
 
     @EventHandler
@@ -61,7 +61,7 @@ public class DamageListener implements Listener {
 
         sender.setHealth(configFile.getInt("options.add-health"));
 
-        actionCacheRegistry.get()
+        actionCacheRegister.get()
                 .forEach(action -> action.execute(sender));
     }
 }
