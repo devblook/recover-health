@@ -14,7 +14,7 @@ public class EffectAction implements Action {
 
     @Override
     public void execute(Player sender) {
-        String[] effectPath = value.split(";");
+        String[] effectPath = value.replaceAll(" ", "").split(";");
 
         PotionEffectType effect = PotionEffectType.getByName(effectPath[0]);
 
@@ -22,6 +22,6 @@ public class EffectAction implements Action {
             return;
         }
 
-        sender.addPotionEffect(new PotionEffect(effect, Integer.parseInt(effectPath[1]), Integer.parseInt(effectPath[2])));
+        sender.addPotionEffect(new PotionEffect(effect, Integer.parseInt(effectPath[1]) * 20, Integer.parseInt(effectPath[2])));
     }
 }
