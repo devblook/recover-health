@@ -30,6 +30,6 @@ public class CommandService implements Service {
 
         AnnotatedCommandTreeBuilder builder = new AnnotatedCommandTreeBuilderImpl(partInjector);
         commandManager.registerCommands(builder.fromClass(recoverHealthCommand));
-        plugin.getLogger().info("[RecoverHealth] Commands loaded!");
+        plugin.getLogger().info("Commands loaded!");
     }
 }
