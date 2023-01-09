@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation ("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly ("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
     implementation ("team.unnamed:inject:1.0.1")
     implementation ("me.fixeddev:commandflow-universal:0.5.3")
     implementation ("me.fixeddev:commandflow-bukkit:0.5.2")
