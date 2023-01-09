@@ -10,20 +10,22 @@
 
 # Options.
 options:
-  add-health: 5
+  add-health: 3
 
 # Item name:
 item:
-  id: DIAMOND_BLOCK
-  name: "&aTotem block."
+  id: GOLD_INGOT
+  name: "&aTotem item."
   lore:
     - ""
-    - "&aClick to activate the totem!"
+    - "&aGood luck!"
 
 # When the player use the totem.
 # You can watch the actions in the plugin page.
 event:
   actions:
-    - "[MESSAGE] A sample test"
+    - "[EFFECT] ABSORPTION; 3; 2"
+    - "[EFFECT] REGENERATION; 3; 2"
+    - "[MESSAGE]&7The item help you..."
 
 
