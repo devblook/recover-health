@@ -22,7 +22,7 @@ public class ActionService implements Service {
             }
 
             if (message.startsWith("[COMMAND]")) {
-                actionCacheRegistry.add(new SendCommandAction(message.substring(9)));
+                actionCacheRegistry.add(new PerformCommandAction(message.substring(9)));
                 continue;
             }
 
@@ -47,7 +47,7 @@ public class ActionService implements Service {
             }
 
             if (message.startsWith("[SOUND]")) {
-                actionCacheRegistry.add(new SoundAction(message.substring(7)));
+                actionCacheRegistry.add(new SendSoundAction(message.substring(7)));
                 continue;
             }
 
@@ -57,7 +57,7 @@ public class ActionService implements Service {
             }
 
             if (message.startsWith("[EFFECT]")) {
-                actionCacheRegistry.add(new EffectAction(message.substring(8)));
+                actionCacheRegistry.add(new SendEffectAction(message.substring(8)));
             }
 
         }
