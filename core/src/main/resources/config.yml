@@ -22,11 +22,12 @@ item:
 
 # When the player use the totem.
 # You can watch the actions in the plugin page.
+
 event:
   actions:
-    - "[EFFECT] ABSORPTION; 35; 2"
+    - "[EFFECT] ABSORPTION; 3; 2"
     - "[EFFECT] REGENERATION; 3; 2"
-    - "[MESSAGE] &a[!] &fYou receive help."
-    - "[SOUND] "
+    - "[MESSAGE] &e[!] &fYou receive totem help."
+    - "[SOUND] ENTITY_GENERIC_EXPLODE, 100, 1"
 
 
