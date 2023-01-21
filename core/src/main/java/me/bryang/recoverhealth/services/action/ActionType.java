@@ -1,4 +1,4 @@
-package me.bryang.recoverhealth.services.commands.action;
+package me.bryang.recoverhealth.services.action;
 
 public enum ActionType {
     MESSAGE(7),

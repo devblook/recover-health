@@ -1,4 +1,4 @@
-package me.bryang.recoverhealth.services.commands.action;
+package me.bryang.recoverhealth.services.action;
 
 import me.bryang.recoverhealth.TextUtils;
 import me.bryang.recoverhealth.actions.*;
@@ -7,12 +7,14 @@ import me.bryang.recoverhealth.services.Service;
 import org.bukkit.Bukkit;
 
 import javax.inject.Inject;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ActionService implements Service {
 
     @Inject
-    private LinkedList<Action> actionCacheRegistry;
+    private List<Action> actionCacheRegistry;
 
     @Inject
     private FileManager configFile;
@@ -44,14 +46,12 @@ public class ActionService implements Service {
             String line = newMessage.substring(format.length());
 
             Action action = actionManager.get(ActionType.valueOf(format));
-            action.setLine(line);
-
-            Bukkit.getLogger().info("line " + action.getLine());
 
             if (actionCacheRegistry.contains(action)){
                 action = action.clone();
             }
 
+            action.setLine(line);
             actionCacheRegistry.add(action);
 
         }
@@ -59,7 +59,6 @@ public class ActionService implements Service {
         actionCacheRegistry.forEach( test -> {
             Bukkit.getLogger().info("test: " + test.getLine());
         });
-
 
     }
 

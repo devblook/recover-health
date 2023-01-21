@@ -1,6 +1,5 @@
 package me.bryang.recoverhealth.actions;
 
-import com.sun.source.tree.TryTree;
 import org.bukkit.entity.Player;
 
 public abstract class Action implements Cloneable{
