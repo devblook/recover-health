@@ -9,7 +9,9 @@ public class SendSoundAction extends Action {
 
     @Override
     public void execute(Player sender) {
-        String[] soundPath = getLine().split(";");
+        String[] soundPath = getLine()
+                .replace(" ", "")
+                .split(";");
 
         Sound sound;
 

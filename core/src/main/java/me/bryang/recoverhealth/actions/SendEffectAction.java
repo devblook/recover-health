@@ -9,7 +9,8 @@ public class SendEffectAction extends Action {
     @Override
     public void execute(Player sender) {
         String[] effectPath = getLine()
-                .replace(" ", "").split(";");
+                .replace(" ", "")
+                .split(";");
 
         PotionEffectType effect = PotionEffectType.getByName(effectPath[0]);
 
@@ -17,7 +18,6 @@ public class SendEffectAction extends Action {
             return;
         }
 
-        System.out.println(effect);
         sender.addPotionEffect(new PotionEffect(effect, Integer.parseInt(effectPath[1]) * 20, Integer.parseInt(effectPath[2])));
     }
 
