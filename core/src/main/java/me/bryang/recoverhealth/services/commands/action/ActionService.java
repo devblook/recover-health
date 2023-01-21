@@ -17,6 +17,7 @@ public class ActionService implements Service {
     @Inject
     private FileManager configFile;
 
+
     private final Map<ActionType, Action> actionManager = new HashMap<>();
 
     @Override
@@ -46,6 +47,11 @@ public class ActionService implements Service {
             action.setLine(line);
 
             Bukkit.getLogger().info("line " + action.getLine());
+
+            if (actionCacheRegistry.contains(action)){
+                action = action.clone();
+            }
+
             actionCacheRegistry.add(action);
 
         }

@@ -1,8 +1,9 @@
 package me.bryang.recoverhealth.actions;
 
+import com.sun.source.tree.TryTree;
 import org.bukkit.entity.Player;
 
-public abstract class Action {
+public abstract class Action implements Cloneable{
 
     private String line = "";
 
@@ -18,5 +19,15 @@ public abstract class Action {
         this.line = line;
     }
 
+    public Action clone() {
+        Action action;
+        try {
+            action = (Action) super.clone();
+        }catch (Exception exception){
+            exception.printStackTrace();
+            return null;
+        }
+        return action;
+    }
 
 }
