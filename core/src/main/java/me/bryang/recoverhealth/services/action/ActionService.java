@@ -56,10 +56,6 @@ public class ActionService implements Service {
 
         }
 
-        actionCacheRegistry.forEach( test -> {
-            Bukkit.getLogger().info("test: " + test.getLine());
-        });
-
     }
 
 }
