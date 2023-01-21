@@ -41,8 +41,12 @@ public class RecoverHealthCommand implements CommandClass {
             return;
         }
 
+        Player senderTarget;
+
         if (target != null){
-            sender = target;
+            senderTarget = target;
+        }else{
+            senderTarget = sender;
         }
 
         ItemStack itemStack = new ItemStack(material);
@@ -57,7 +61,7 @@ public class RecoverHealthCommand implements CommandClass {
 
         itemStack.setItemMeta(itemMeta);
 
-        Inventory inventory = sender.getInventory();
+        Inventory inventory = senderTarget.getInventory();
         int times = 0;
 
         while (times != quantity) {
@@ -65,16 +69,16 @@ public class RecoverHealthCommand implements CommandClass {
             times++;
         }
 
-        sender.updateInventory();
+        senderTarget.updateInventory();
 
-        if (target == null) {
+        if (senderTarget.getName().equalsIgnoreCase(sender.getName())) {
             sender.sendMessage(messagesFile.getString("command.give.player")
                     .replace("%number%", String.valueOf(quantity)));
         }else{
 
             sender.sendMessage(messagesFile.getString("command.give.target")
                     .replace("%number%", String.valueOf(quantity))
-                    .replace("%target%", target.getName()));
+                    .replace("%target%", senderTarget.getName()));
         }
 
 
