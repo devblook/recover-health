@@ -12,17 +12,6 @@ public class TextUtils {
 
         return messageBuilder.toString();
     }
-    public static String replaceFirst(String messageTarget, String newReplace, char... charTargets){
 
-        StringBuilder messageBuilder = new StringBuilder(messageTarget);
-
-        for (char charTarget : charTargets){
-
-            int index = messageTarget.indexOf(charTarget);
-            messageBuilder.replace(index, index + 1, newReplace);
-        }
-
-        return messageBuilder.toString();
-    }
 }
 
