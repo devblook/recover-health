@@ -1,3 +1,3 @@
 rootProject.name = "RecoverHealth"
 
-include(":api", ":core:")
+include( ":core:")

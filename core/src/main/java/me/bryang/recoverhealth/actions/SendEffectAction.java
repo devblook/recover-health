@@ -4,17 +4,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class SendEffectAction implements Action {
-
-    private final String value;
-
-    public SendEffectAction(String value) {
-        this.value = value;
-    }
+public class SendEffectAction extends Action {
 
     @Override
     public void execute(Player sender) {
-        String[] effectPath = value.replaceAll(" ", "").split(";");
+        String[] effectPath = getLine()
+                .replace(" ", "").split(";");
 
         PotionEffectType effect = PotionEffectType.getByName(effectPath[0]);
 
@@ -22,6 +17,8 @@ public class SendEffectAction implements Action {
             return;
         }
 
+        System.out.println(effect);
         sender.addPotionEffect(new PotionEffect(effect, Integer.parseInt(effectPath[1]) * 20, Integer.parseInt(effectPath[2])));
     }
+
 }

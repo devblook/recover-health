@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,7 +78,7 @@ public final class FileManager extends YamlConfiguration {
     }
 
     @Override
-    public String getString(String path) {
+    public String getString(@NotNull String path) {
 
         String text = super.getString(path);
         if (text == null) {
@@ -88,7 +89,7 @@ public final class FileManager extends YamlConfiguration {
     }
 
     @Override
-    public List<String> getStringList(String path) {
+    public List<String>  getStringList(@NotNull String path) {
 
         List<String> text = super.getStringList(path);
 

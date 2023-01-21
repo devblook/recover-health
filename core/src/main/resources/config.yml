@@ -1,5 +1,5 @@
 #
-# RecoverHealth 2.0
+# RecoverHealth 2.1
 # By BryanG.
 #
 
@@ -18,14 +18,15 @@ item:
   name: "&aTotem item."
   lore:
     - ""
-    - "&aGood luck!"
+    - "&fGood luck!"
 
 # When the player use the totem.
 # You can watch the actions in the plugin page.
 event:
   actions:
-    - "[EFFECT] ABSORPTION; 3; 2"
+    - "[EFFECT] ABSORPTION; 35; 2"
     - "[EFFECT] REGENERATION; 3; 2"
-    - "[MESSAGE]&7The item help you..."
+    - "[MESSAGE] &a[!] &fYou receive help."
+    - "[SOUND] "
 
 

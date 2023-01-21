@@ -4,17 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-public class BroadcastSoundAction implements Action {
-
-    private final String value;
-
-    public BroadcastSoundAction(String value) {
-        this.value = value;
-    }
+public class BroadcastSoundAction extends Action {
 
     @Override
     public void execute(Player sender) {
-        String[] soundPath = value.split(";");
+        String[] soundPath = getLine().split(";");
 
         Sound sound;
 
@@ -28,4 +22,5 @@ public class BroadcastSoundAction implements Action {
             onlinePlayer.playSound(sender.getLocation(), sound, Float.parseFloat(soundPath[1]), Float.parseFloat(soundPath[2]));
         });
     }
+
 }

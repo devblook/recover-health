@@ -16,8 +16,6 @@ dependencies {
     implementation ("team.unnamed:inject:1.0.1")
     implementation ("me.fixeddev:commandflow-universal:0.5.3")
     implementation ("me.fixeddev:commandflow-bukkit:0.5.2")
-    implementation (project(":api:"))
-
 }
 tasks {
     shadowJar {

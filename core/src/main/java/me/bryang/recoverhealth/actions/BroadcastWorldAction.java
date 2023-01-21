@@ -2,18 +2,13 @@ package me.bryang.recoverhealth.actions;
 
 import org.bukkit.entity.Player;
 
-public class BroadcastWorldAction implements Action {
-
-    private final String value;
-
-    public BroadcastWorldAction(String value) {
-        this.value = value;
-    }
+public class BroadcastWorldAction extends Action {
 
     @Override
     public void execute(Player sender) {
 
         sender.getWorld().getPlayers()
-                .forEach(target -> target.sendMessage(value));
+                .forEach(target -> target.sendMessage(getLine()));
     }
+
 }

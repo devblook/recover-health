@@ -1,7 +1,6 @@
 package me.bryang.recoverhealth.listeners;
 
 import me.bryang.recoverhealth.actions.Action;
-import me.bryang.recoverhealth.api.CacheRegistry;
 import me.bryang.recoverhealth.manager.FileManager;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -13,11 +12,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import team.unnamed.inject.InjectAll;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 @InjectAll
 public class DamageListener implements Listener {
 
     private FileManager configFile;
-    private CacheRegistry<Action> actionCacheRegister;
+    private LinkedList<Action> actionCacheRegister;
 
 
     @EventHandler
@@ -61,7 +64,7 @@ public class DamageListener implements Listener {
 
         sender.setHealth(configFile.getInt("options.add-health"));
 
-        actionCacheRegister.get()
+        actionCacheRegister
                 .forEach(action -> action.execute(sender));
     }
 }

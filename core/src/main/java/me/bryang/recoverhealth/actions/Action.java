@@ -2,7 +2,21 @@ package me.bryang.recoverhealth.actions;
 
 import org.bukkit.entity.Player;
 
-public interface Action {
+public abstract class Action {
 
-    void execute(Player sender);
+    private String line = "";
+
+    public void execute(Player sender){
+
+    }
+
+    public String getLine(){
+        return line;
+    }
+
+    public void setLine(String line){
+        this.line = line;
+    }
+
+
 }
