@@ -1,12 +1,15 @@
 package me.bryang.recoverhealth.actions;
 
+import me.bryang.recoverhealth.TextUtils;
 import org.bukkit.entity.Player;
 
 public class SendMessageAction extends Action {
 
     @Override
     public void execute(Player sender) {
-        sender.sendMessage(getLine());
+        String line = TextUtils.replaceFirst(getLine(), 0, "");
+
+        sender.sendMessage(line);
 
     }
 

@@ -13,5 +13,14 @@ public class TextUtils {
         return messageBuilder.toString();
     }
 
+    public static String replaceFirst(String messageTarget, int index, String newReplace){
+
+        StringBuilder messageBuilder = new StringBuilder(messageTarget);
+
+        messageBuilder.replace(index, index + 1, newReplace);
+
+
+        return messageBuilder.toString();
+    }
 }
 
