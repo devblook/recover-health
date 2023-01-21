@@ -24,20 +24,25 @@ public class RecoverHealthCommand implements CommandClass {
     @Named("messages")
     private FileManager messagesFile;
 
-    @Command(names = "")
+    @Command(names = {"", "help"})
     public void mainSubCommand(@Sender Player sender) {
         messagesFile.getStringList("command.help").forEach(sender::sendMessage);
 
     }
 
     @Command(names = "give", permission = "recoverhealth.give")
-    public void reloadSubCommand(@Sender Player sender, @OptArg("1") int quantity) {
+    public void reloadSubCommand(@Sender Player sender, @OptArg("1") int quantity, @OptArg Player target) {
 
-        Material material = Material.getMaterial(configFile.getString("item.id").toUpperCase());
+        Material material = Material.getMaterial(configFile.getString("item.id")
+                .toUpperCase());
 
         if (material == null) {
             Bukkit.getLogger().info("Unknown material!");
             return;
+        }
+
+        if (target != null){
+            sender = target;
         }
 
         ItemStack itemStack = new ItemStack(material);
@@ -62,13 +67,22 @@ public class RecoverHealthCommand implements CommandClass {
 
         sender.updateInventory();
 
-        sender.sendMessage(messagesFile.getString("command.give")
-                .replace("%number%", String.valueOf(quantity)));
+        if (target != null) {
+            sender.sendMessage(messagesFile.getString("command.give.player")
+                    .replace("%number%", String.valueOf(quantity)));
+        }else{
+
+            sender.sendMessage(messagesFile.getString("command.give.target")
+                    .replace("%number%", String.valueOf(quantity))
+                    .replace("%target%%", String.valueOf(target)));
+        }
+
 
     }
 
     @Command(names = "reload", permission = "recoverhealth.reload")
     public void reloadSubCommand(@Sender Player sender) {
+
         configFile.reload();
         messagesFile.reload();
 
