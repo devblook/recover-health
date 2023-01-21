@@ -12,15 +12,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import team.unnamed.inject.InjectAll;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @InjectAll
 public class DamageListener implements Listener {
 
     private FileManager configFile;
-    private LinkedList<Action> actionCacheRegister;
+    private List<Action> actionCacheRegister;
 
 
     @EventHandler

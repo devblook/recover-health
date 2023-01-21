@@ -1,15 +1,14 @@
 package me.bryang.recoverhealth.modules;
 
-import com.sun.tools.javac.Main;
 import me.bryang.recoverhealth.RecoverHealth;
 import me.bryang.recoverhealth.actions.Action;
 import me.bryang.recoverhealth.commands.RecoverHealthCommand;
 import me.bryang.recoverhealth.listeners.DamageListener;
-import org.bukkit.Server;
 import team.unnamed.inject.AbstractModule;
 import team.unnamed.inject.key.TypeReference;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainModule extends AbstractModule {
 
@@ -26,8 +25,8 @@ public class MainModule extends AbstractModule {
 
         install(new FileModule(recoverHealth));
         install(new ServiceModule());
-        bind(new TypeReference<LinkedList<Action>>(){})
-                .toInstance(new LinkedList<>());
+        bind(new TypeReference<List<Action>>(){})
+                .toInstance(new ArrayList<>());
 
         bind(RecoverHealthCommand.class)
                 .singleton();
