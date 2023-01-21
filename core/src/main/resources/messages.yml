@@ -11,7 +11,7 @@ command:
 
   give:
     player: "&a[Server] &8| &a%number% &fitems gived."
-    target: "&a[Server] &8| &a%number% &fitems gived to &a%player%&f."
+    target: "&a[Server] &8| &a%number% &fitems gived to &a%target%&f."
 
 error:
 

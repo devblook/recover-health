@@ -67,14 +67,14 @@ public class RecoverHealthCommand implements CommandClass {
 
         sender.updateInventory();
 
-        if (target != null) {
+        if (target == null) {
             sender.sendMessage(messagesFile.getString("command.give.player")
                     .replace("%number%", String.valueOf(quantity)));
         }else{
 
             sender.sendMessage(messagesFile.getString("command.give.target")
                     .replace("%number%", String.valueOf(quantity))
-                    .replace("%target%%", String.valueOf(target)));
+                    .replace("%target%", target.getName()));
         }
 
 

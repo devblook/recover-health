@@ -28,6 +28,6 @@ event:
     - "[EFFECT] ABSORPTION; 3; 2"
     - "[EFFECT] REGENERATION; 3; 2"
     - "[MESSAGE] &e[!] &fYou receive totem help."
-    - "[SOUND] ENTITY_GENERIC_EXPLODE, 100, 1"
+    - "[SOUND] ENTITY_GENERIC_EXPLODE; 100; 1"
 
 
