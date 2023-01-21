@@ -38,8 +38,8 @@ public final class FileManager extends YamlConfiguration {
         try {
             if (file.exists()) {
 
-                if (this.plugin.getResource(this.fileName) != null) {
-                    this.plugin.saveResource(this.fileName, false);
+                if (plugin.getResource(this.fileName) != null) {
+                    plugin.saveResource(this.fileName, false);
                 }
 
                 load(file);
@@ -48,8 +48,6 @@ public final class FileManager extends YamlConfiguration {
 
             if (plugin.getResource(fileName) != null) {
                 plugin.saveResource(fileName, false);
-            } else {
-                save(file);
             }
 
             load(file);
