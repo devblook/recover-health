@@ -114,4 +114,5 @@ buildNumber.properties
 # Common working directory
 run/
 *.lock
+
 *core/build/
