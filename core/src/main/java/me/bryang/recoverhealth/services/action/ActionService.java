@@ -23,6 +23,12 @@ public class ActionService implements Service {
     @Override
     public void init() {
 
+        List<String> actionMessageList = configFile.getStringList("event.actions");
+        
+        if (actionMessageList == null){
+            return;
+        }
+
         actionManager.put(ActionType.MESSAGE, new SendMessageAction());
         actionManager.put(ActionType.COMMAND, new PerformCommandAction());
         actionManager.put(ActionType.CONSOLECMD, new SendConsoleAction());
@@ -33,11 +39,6 @@ public class ActionService implements Service {
         actionManager.put(ActionType.SOUND, new SendSoundAction());
         actionManager.put(ActionType.EFFECT, new SendEffectAction());
 
-        List<String> actionMessageList = configFile.getStringList("event.actions");
-
-        if (actionMessageList == null){
-            return;
-        }
 
         for (String message : actionMessageList) {
 
