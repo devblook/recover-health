@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import team.unnamed.inject.InjectAll;
 
 import java.util.List;
@@ -40,11 +41,13 @@ public class DamageListener implements Listener {
             return;
         }
 
-        if (itemStack.getItemMeta() == null) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
+        if (itemMeta == null) {
             return;
         }
 
-        if (!itemStack.getItemMeta().getDisplayName()
+        if (!itemMeta.getDisplayName()
                 .equalsIgnoreCase(configFile.getString("item.name"))) {
             return;
         }
