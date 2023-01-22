@@ -1,4 +1,3 @@
-[abandoned]
 
 [![CodeFactor](https://www.codefactor.io/repository/github/devblook/recover-health/badge)](https://www.codefactor.io/repository/github/devblook/recover-health)
 
