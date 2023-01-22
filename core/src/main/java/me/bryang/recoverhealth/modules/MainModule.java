@@ -25,6 +25,7 @@ public class MainModule extends AbstractModule {
 
         install(new FileModule(recoverHealth));
         install(new ServiceModule());
+
         bind(new TypeReference<List<Action>>(){})
                 .toInstance(new ArrayList<>());
 

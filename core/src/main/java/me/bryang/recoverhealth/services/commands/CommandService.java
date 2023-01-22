@@ -21,6 +21,7 @@ public class CommandService implements Service {
 
     @Override
     public void init() {
+
         BukkitCommandManager commandManager = new BukkitCommandManager("recoverhealth");
         commandManager.getTranslator().setProvider(new CommandTranslator());
 

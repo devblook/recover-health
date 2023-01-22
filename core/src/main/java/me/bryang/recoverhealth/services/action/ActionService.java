@@ -4,7 +4,6 @@ import me.bryang.recoverhealth.TextUtils;
 import me.bryang.recoverhealth.actions.*;
 import me.bryang.recoverhealth.manager.FileManager;
 import me.bryang.recoverhealth.services.Service;
-import org.bukkit.Bukkit;
 
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -14,11 +13,10 @@ import java.util.Map;
 public class ActionService implements Service {
 
     @Inject
-    private List<Action> actionCacheRegistry;
+    private List<Action> actionList;
 
     @Inject
     private FileManager configFile;
-
 
     private final Map<ActionType, Action> actionManager = new HashMap<>();
 
@@ -35,8 +33,13 @@ public class ActionService implements Service {
         actionManager.put(ActionType.SOUND, new SendSoundAction());
         actionManager.put(ActionType.EFFECT, new SendEffectAction());
 
+        List<String> actionMessageList = configFile.getStringList("event.actions");
 
-        for (String message : configFile.getStringList("event.actions")) {
+        if (actionMessageList == null){
+            return;
+        }
+
+        for (String message : actionMessageList) {
 
             String newMessage = TextUtils
                     .replaceFirst(message, "[", "");
@@ -47,12 +50,12 @@ public class ActionService implements Service {
 
             Action action = actionManager.get(ActionType.valueOf(format));
 
-            if (actionCacheRegistry.contains(action)){
+            if (actionList.contains(action)){
                 action = action.clone();
             }
 
             action.setLine(line);
-            actionCacheRegistry.add(action);
+            actionList.add(action);
 
         }
 

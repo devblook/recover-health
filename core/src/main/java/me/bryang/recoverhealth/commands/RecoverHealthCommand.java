@@ -21,6 +21,7 @@ import java.util.List;
 public class RecoverHealthCommand implements CommandClass {
 
     private FileManager configFile;
+
     @Named("messages")
     private FileManager messagesFile;
 

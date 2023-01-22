@@ -18,7 +18,7 @@ import java.util.List;
 public class DamageListener implements Listener {
 
     private FileManager configFile;
-    private List<Action> actionCacheRegister;
+    private List<Action> actionList;
 
 
     @EventHandler
@@ -51,18 +51,18 @@ public class DamageListener implements Listener {
 
         event.setCancelled(true);
 
-        PlayerInventory playerInventory = sender.getInventory();
+        PlayerInventory senderInventory = sender.getInventory();
 
         if (itemStack.getAmount() < 2) {
-            playerInventory.clear(playerInventory.getHeldItemSlot());
+            senderInventory.clear(senderInventory.getHeldItemSlot());
         } else {
             itemStack.setAmount(itemStack.getAmount() - 1);
-            playerInventory.setItem(playerInventory.getHeldItemSlot(), itemStack);
+            senderInventory.setItem(senderInventory.getHeldItemSlot(), itemStack);
         }
 
         sender.setHealth(configFile.getInt("options.add-health"));
 
-        actionCacheRegister
+        actionList
                 .forEach(action -> action.execute(sender));
     }
 }
