@@ -1,8 +1,8 @@
 package me.bryang.recoverhealth.services.action;
 
+import me.bryang.recoverhealth.FileCreator;
 import me.bryang.recoverhealth.TextUtils;
 import me.bryang.recoverhealth.actions.*;
-import me.bryang.recoverhealth.manager.FileManager;
 import me.bryang.recoverhealth.services.Service;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ public class ActionService implements Service {
     private List<Action> actionList;
 
     @Inject
-    private FileManager configFile;
+    private FileCreator configFile;
 
     private final Map<ActionType, Action> actionManager = new HashMap<>();
 
@@ -24,7 +24,7 @@ public class ActionService implements Service {
     public void init() {
 
         List<String> actionMessageList = configFile.getStringList("event.actions");
-        
+
         if (actionMessageList == null){
             return;
         }

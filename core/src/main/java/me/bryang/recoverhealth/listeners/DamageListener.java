@@ -1,8 +1,7 @@
 package me.bryang.recoverhealth.listeners;
 
+import me.bryang.recoverhealth.FileCreator;
 import me.bryang.recoverhealth.actions.Action;
-import me.bryang.recoverhealth.manager.FileManager;
-import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +17,7 @@ import java.util.List;
 @InjectAll
 public class DamageListener implements Listener {
 
-    private FileManager configFile;
+    private FileCreator configFile;
     private List<Action> actionList;
 
 
@@ -37,7 +36,7 @@ public class DamageListener implements Listener {
 
         ItemStack itemStack = sender.getInventory().getItemInMainHand();
 
-        if (itemStack.getType() != Material.getMaterial(configFile.getString("item.id").toUpperCase())) {
+        if (itemStack.getType() != configFile.getMaterial("item.id")){
             return;
         }
 
