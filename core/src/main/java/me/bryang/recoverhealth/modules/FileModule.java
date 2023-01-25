@@ -18,10 +18,10 @@ public class FileModule extends AbstractModule {
     public void configure() {
 
         bind(FileCreator.class)
-                .toInstance(new FileCreator("config"));
+                .toInstance(new FileCreator(plugin,"config"));
         bind(FileCreator.class)
                 .named("messages")
-                .toInstance(new FileCreator("messages"));
+                .toInstance(new FileCreator(plugin, "messages"));
 
         plugin.getLogger().info("Files loaded!");
     }
