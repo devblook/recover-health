@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
+import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
@@ -17,33 +18,19 @@ import java.util.List;
 public class FileCreator {
 
     private ConfigurationNode configurationNode;
-
-    private final String fileName;
-    private final RecoverHealth plugin;
-
     private YamlConfigurationLoader configLoader;
 
-    public FileCreator(RecoverHealth plugin, String fileName){
-        this.plugin = plugin;
-        this.fileName = fileName;
-
-        start();
-    }
-
-    public void start(){
+    public void start(Path path, String fileName) throws ConfigurateException {
 
         configLoader = YamlConfigurationLoader
                 .builder()
-                .path(Path.of(plugin.getDataFolder().getPath())
+                .path(path
                         .resolve(fileName + ".yml"))
                 .build();
 
-        try {
-            configurationNode = configLoader.load();
+        configurationNode = configLoader.load();
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+
     }
 
     public void reload(){

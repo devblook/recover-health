@@ -33,5 +33,9 @@ public class TextUtils {
 
         return objects;
     }
+
+    public static void loadFiles(String pluginPath){
+
+    }
 }
 

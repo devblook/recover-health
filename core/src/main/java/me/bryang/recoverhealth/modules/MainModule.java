@@ -4,6 +4,7 @@ import me.bryang.recoverhealth.RecoverHealth;
 import me.bryang.recoverhealth.actions.Action;
 import me.bryang.recoverhealth.commands.RecoverHealthCommand;
 import me.bryang.recoverhealth.listeners.DamageListener;
+import me.bryang.recoverhealth.modules.file.FileModule;
 import team.unnamed.inject.AbstractModule;
 import team.unnamed.inject.key.TypeReference;
 
