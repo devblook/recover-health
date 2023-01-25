@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.configurate.ConfigurationNode;
+import org.spongepowered.configurate.serialize.SerializationException;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
 import java.nio.file.Path;
@@ -18,10 +19,14 @@ public class FileCreator {
     private ConfigurationNode configurationNode;
 
     private final String fileName;
+    private final RecoverHealth plugin;
+
     private YamlConfigurationLoader configLoader;
 
-    public FileCreator(String fileName){
+    public FileCreator(RecoverHealth plugin, String fileName){
+        this.plugin = plugin;
         this.fileName = fileName;
+
         start();
     }
 
@@ -29,7 +34,8 @@ public class FileCreator {
 
         configLoader = YamlConfigurationLoader
                 .builder()
-                .path(Path.of(fileName + ".yml"))
+                .path(Path.of(plugin.getDataFolder().getPath())
+                        .resolve(fileName + ".yml"))
                 .build();
 
         try {
@@ -70,7 +76,7 @@ public class FileCreator {
 
         try {
              text = configurationNode
-                     .node((Object) path.split("\\."))
+                     .node(TextUtils.convertToArrayObject(path))
                      .getList(String.class, new ArrayList<>());
 
         } catch (Exception exception){
@@ -88,14 +94,22 @@ public class FileCreator {
 
     public int getInt(@NotNull String path) {
 
-        return configurationNode.node((Object) path.split("\\.")).getInt(Integer.MIN_VALUE);
+        return configurationNode
+                .node(TextUtils.convertToArrayObject(path))
+                .getInt(Integer.MIN_VALUE);
     }
 
-    public Material getMaterial(@NotNull String materialName){
+    public Material getMaterial(@NotNull String materialName) {
 
-        Material material = Material.getMaterial(getString(materialName).toUpperCase());
+        Material material;
+        try {
 
-        if (material == null){
+            material = configurationNode
+                    .node(TextUtils.convertToArrayObject(materialName.toUpperCase()))
+                    .get(Material.class);
+
+        } catch (Exception exception){
+            exception.printStackTrace();
             Bukkit.getLogger().info("Error: The material doesn't exist. Please check your path.");
             return null;
         }
@@ -106,7 +120,7 @@ public class FileCreator {
 
     public ItemStack getItemStack(@NotNull String itemFormat){
 
-        Material material = Material.getMaterial(getString(itemFormat + ".id").toUpperCase());
+        Material material = getMaterial(itemFormat + ".id");
 
         if (material == null){
             return null;
