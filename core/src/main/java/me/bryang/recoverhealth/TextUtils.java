@@ -2,7 +2,7 @@ package me.bryang.recoverhealth;
 
 public class TextUtils {
 
-    public static String replaceFirst(String messageTarget, String charTarget, String newReplace){
+    public static String replaceFirstFromIndex(String messageTarget, String charTarget, String newReplace){
 
         StringBuilder messageBuilder = new StringBuilder(messageTarget);
 
@@ -13,7 +13,7 @@ public class TextUtils {
         return messageBuilder.toString();
     }
 
-    public static String replaceFirst(String messageTarget, int index, String newReplace){
+    public static String replaceFirstFromIndex(String messageTarget, int index, String newReplace){
 
         StringBuilder messageBuilder = new StringBuilder(messageTarget);
 
@@ -21,6 +21,17 @@ public class TextUtils {
 
 
         return messageBuilder.toString();
+    }
+
+    public static Object[] convertToArrayObject(String path){
+
+        String[] pathList = path.split("\\.");
+
+        Object[] objects = new Object[pathList.length];
+
+        System.arraycopy(pathList, 0, objects, 0, pathList.length);
+
+        return objects;
     }
 }
 

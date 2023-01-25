@@ -43,8 +43,8 @@ public class ActionService implements Service {
         for (String message : actionMessageList) {
 
             String newMessage = TextUtils
-                    .replaceFirst(message, "[", "");
-            newMessage = TextUtils.replaceFirst(newMessage, "]", " ");
+                    .replaceFirstFromIndex(message, "[", "");
+            newMessage = TextUtils.replaceFirstFromIndex(newMessage, "]", " ");
 
             String format = newMessage.split(" ")[0].toUpperCase();
             String line = newMessage.substring(format.length());

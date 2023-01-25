@@ -7,7 +7,7 @@ public class SendMessageAction extends Action {
 
     @Override
     public void execute(Player sender) {
-        String line = TextUtils.replaceFirst(getLine(), 0, "");
+        String line = TextUtils.replaceFirstFromIndex(getLine(), 0, "");
 
         sender.sendMessage(line);
 
