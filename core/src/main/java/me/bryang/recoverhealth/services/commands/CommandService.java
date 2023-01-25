@@ -9,14 +9,13 @@ import me.fixeddev.commandflow.annotated.part.PartInjector;
 import me.fixeddev.commandflow.annotated.part.defaults.DefaultsModule;
 import me.fixeddev.commandflow.bukkit.BukkitCommandManager;
 import me.fixeddev.commandflow.bukkit.factory.BukkitModule;
+import team.unnamed.inject.InjectAll;
 
-import javax.inject.Inject;
-
+@InjectAll
 public class CommandService implements Service {
 
-    @Inject
     private RecoverHealth plugin;
-    @Inject
+
     private RecoverHealthCommand recoverHealthCommand;
 
     @Override
