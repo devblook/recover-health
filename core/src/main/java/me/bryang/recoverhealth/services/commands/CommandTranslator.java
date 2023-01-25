@@ -1,6 +1,6 @@
 package me.bryang.recoverhealth.services.commands;
 
-import me.bryang.recoverhealth.manager.FileManager;
+import me.bryang.recoverhealth.FileCreator;
 import me.fixeddev.commandflow.Namespace;
 import me.fixeddev.commandflow.translator.TranslationProvider;
 
@@ -11,7 +11,7 @@ public class CommandTranslator implements TranslationProvider {
 
     @Inject
     @Named("messages")
-    private FileManager messagesFile;
+    private FileCreator messagesFile;
 
     @Override
     public String getTranslation(Namespace namespace, String key) {
