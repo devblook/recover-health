@@ -9,12 +9,14 @@ import team.unnamed.inject.InjectAll;
 public class ListenerService implements Service {
 
 
-    private RecoverHealth recoverHealth;
+    private RecoverHealth plugin;
     private DamageListener damageListener;
 
     @Override
     public void init() {
-        Bukkit.getPluginManager().registerEvents(damageListener, recoverHealth);
-        Bukkit.getLogger().info("[RecoverHealth] Events loaded!");
+
+        Bukkit.getPluginManager().registerEvents(damageListener, plugin);
+
+        plugin.getLogger().info("Events loaded!");
     }
 }
