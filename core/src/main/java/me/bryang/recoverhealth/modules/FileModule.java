@@ -8,8 +8,11 @@ import javax.inject.Inject;
 
 public class FileModule extends AbstractModule {
 
-    @Inject
-    private RecoverHealth plugin;
+    private final RecoverHealth plugin;
+
+    public FileModule(RecoverHealth plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public void configure() {

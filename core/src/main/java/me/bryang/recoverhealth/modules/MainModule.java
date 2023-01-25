@@ -12,18 +12,19 @@ import java.util.List;
 
 public class MainModule extends AbstractModule {
 
-    private final RecoverHealth recoverHealth;
+    private final RecoverHealth plugin;
 
-    public MainModule(RecoverHealth recoverHealth) {
-        this.recoverHealth = recoverHealth;
+    public MainModule(RecoverHealth plugin) {
+        this.plugin = plugin;
     }
 
     @Override
     public void configure() {
-        bind(RecoverHealth.class)
-                .toInstance(recoverHealth);
 
-        install(new FileModule(recoverHealth));
+        bind(RecoverHealth.class)
+                .toInstance(plugin);
+
+        install(new FileModule(plugin));
         install(new ServiceModule());
 
         bind(new TypeReference<List<Action>>(){})
