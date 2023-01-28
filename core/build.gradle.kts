@@ -17,7 +17,7 @@ dependencies {
     implementation ("team.unnamed:inject:1.0.1")
     implementation ("me.fixeddev:commandflow-universal:0.5.3")
     implementation ("me.fixeddev:commandflow-bukkit:0.5.2")
-    implementation ("com.github.cryptomorin:xSeries:9.2.0") { isTransitive = false }
+    implementation ("com.github.cryptomorin:XSeries:9.2.0") { isTransitive = false }
     implementation ("org.spongepowered:configurate-yaml:4.0.0")
 }
 tasks {
