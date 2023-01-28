@@ -13,12 +13,12 @@ import java.util.Iterator;
 
 public class FileBinder extends AbstractModule {
 
-    @Provides
+    @Provides @Singleton
     public FileCreator getConfigFile(@FileAnnotation Path path){
         return new FileCreator(path, "config");
     }
 
-    @Provides @Named("messages")
+    @Provides @Singleton @Named("messages")
     public FileCreator getMessagesFile(@FileAnnotation Path path){
 
         return new FileCreator(path, "messages");
