@@ -15,29 +15,12 @@ public class FileBinder extends AbstractModule {
 
     @Provides
     public FileCreator getConfigFile(@FileAnnotation Path path){
-
-        FileCreator fileCreator = new FileCreator(path, "config");
-
-        try{
-            fileCreator.start();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        return fileCreator;
+        return new FileCreator(path, "config");
     }
 
     @Provides @Named("messages")
     public FileCreator getMessagesFile(@FileAnnotation Path path){
 
-        FileCreator fileCreator = new FileCreator(path, "messages");
-
-        try{
-            fileCreator.start();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        return fileCreator;
+        return new FileCreator(path, "messages");
     }
 }

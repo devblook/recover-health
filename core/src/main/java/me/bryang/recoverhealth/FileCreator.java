@@ -26,6 +26,13 @@ public class FileCreator {
     public FileCreator(Path path, String config) {
         this.path = path;
         this.fileName = config + ".yml";
+
+        try {
+            start();
+        }catch (ConfigurateException exception){
+            exception.printStackTrace();
+        }
+
     }
 
     public void start() throws ConfigurateException {
