@@ -20,7 +20,15 @@ public class FileCreator {
     private ConfigurationNode configurationNode;
     private YamlConfigurationLoader configLoader;
 
-    public void start(Path path, String fileName) throws ConfigurateException {
+    private final Path path;
+    private final String fileName;
+
+    public FileCreator(Path path, String config) {
+        this.path = path;
+        this.fileName = config + ".yml";
+    }
+
+    public void start() throws ConfigurateException {
 
         configLoader = YamlConfigurationLoader
                 .builder()
